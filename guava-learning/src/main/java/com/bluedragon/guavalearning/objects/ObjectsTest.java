@@ -3,6 +3,10 @@ package com.bluedragon.guavalearning.objects;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
+/**
+ * @author chq
+ * @date 2019/7/27 20:39
+ */
 public class ObjectsTest {
 
     private String name="zhangsan";

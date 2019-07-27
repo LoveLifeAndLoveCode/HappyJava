@@ -2,10 +2,14 @@ package com.bluedragon.guavalearning.preconditions;
 
 import com.google.common.base.Preconditions;
 
+/**
+ * @author chq
+ * @date 2019/7/27 20:39
+ */
 public class PreconditionsTest {
 
     public static void main(String[] args) {
-        String arg="1";
+        String arg = "1";
         Preconditions.checkArgument(arg.equals("1"));
 //        Preconditions.checkArgument(arg.equals("2"));
 //        Preconditions.checkArgument(arg.equals("2"),"参数不为2");
