@@ -1,7 +1,7 @@
 package com.bluedragon.guavalearning.ordering;
 
 /**
- * @author chq
+ * @author CodeRush
  * @date 2019/7/27 20:39
  */
 public class Person {
@@ -24,11 +24,19 @@ public class Person {
         this.age = age;
     }
 
+    /**
+     * 重写toString,返回字符串长度转成字符串
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return String.valueOf(name.length());
     }
 
+    /**
+     * 打印方法
+     */
     public void print() {
         System.out.println("Person{" +
                 "name='" + name + '\'' +

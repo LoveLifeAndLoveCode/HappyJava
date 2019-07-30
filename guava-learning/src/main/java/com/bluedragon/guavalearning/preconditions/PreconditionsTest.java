@@ -3,7 +3,7 @@ package com.bluedragon.guavalearning.preconditions;
 import com.google.common.base.Preconditions;
 
 /**
- * @author chq
+ * @author CodeRush
  * @date 2019/7/27 20:39
  */
 public class PreconditionsTest {

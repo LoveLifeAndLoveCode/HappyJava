@@ -3,7 +3,7 @@ package com.bluedragon.guavalearning.optional;
 import com.google.common.base.Optional;
 
 /**
- * @author chq
+ * @author CodeRush
  * @date 2019/7/27 20:39
  */
 public class OptionalTest {
@@ -13,8 +13,7 @@ public class OptionalTest {
         Optional<Integer> possible = Optional.of(5);
         //present：存在
         System.out.println(possible.isPresent());  //true
-        //返回Optional所包含的引用， 若引用缺失， 则抛出
-        //java.lang.IllegalStateException
+        //返回Optional所包含的引用， 若引用缺失， 则抛出java.lang.IllegalStateException
         System.out.println(possible.get()); //5
         //含有默认值的返回,如果为null返回or中的值，否则直接返回引用值
         System.out.println(possible.or(1)); //5

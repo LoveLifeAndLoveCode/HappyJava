@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * @author chq
+ * @author CodeRush
  * @date 2019/7/27 20:39
  */
 public class OrderingTest {
