@@ -40,7 +40,7 @@ public class CollectionToolTest {
         //更加语义化的方法
         ArrayList<Object> objects = Lists.newArrayListWithCapacity(5);
         List<List<String>> partition = Lists.partition(transform1, 3);
-        System.out.println(partition); //[[dd, ll, rr], [oo, ww,   ], [oo, ll, ll], [ee, hh]]
+        System.out.println(partition); //[[dd, ll, rr], [oo, ww,   ], [oo, ll, ll], [ee, hh]
 
         HashSet<Integer> set1 = Sets.newHashSet(1, 3, 5, 3, 7, 9, 6, 8);
         HashSet<Integer> set2 = Sets.newHashSet(2, 4, 6, 8, 10);
@@ -70,5 +70,8 @@ public class CollectionToolTest {
         System.out.println(Ints.max(ints));
         System.out.println(Ints.min(ints));
 
+        //根据Iterable子类及一个函数转换成ImmutableMap
+        ImmutableMap<Integer, String> integerStringImmutableMap = Maps.toMap(set1, input -> "value" + input);
+        System.out.println(integerStringImmutableMap);
     }
 }
