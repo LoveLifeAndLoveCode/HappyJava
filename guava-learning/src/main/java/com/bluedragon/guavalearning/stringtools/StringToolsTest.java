@@ -1,7 +1,6 @@
 package com.bluedragon.guavalearning.stringtools;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
+import com.google.common.base.*;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -87,6 +86,36 @@ public class StringToolsTest {
 
         //on里面也可以传递正则表达式,等价于Splitter.onPattern()
         //trimResults方法可以传递一个匹配器，去掉匹配器前后匹配到的内容
+        //endregion
+
+        //region CharMatcher:字符匹配器
+        String containDigitStr = "ab123c1.0dd";
+        //只保留数字
+        String digitRetainStr = CharMatcher.DIGIT.retainFrom(containDigitStr);
+        System.out.println(digitRetainStr);
+        //移除数字
+        String digitRemoveStr = CharMatcher.DIGIT.removeFrom(containDigitStr);
+        System.out.println(digitRemoveStr);
+        //替换数字为制定更多字符串
+        String digitReplaceStr = CharMatcher.DIGIT.replaceFrom(containDigitStr, "*");
+        System.out.println(digitReplaceStr);
+        String javaDigitRemoveStr = CharMatcher.JAVA_DIGIT.removeFrom(containDigitStr);
+        System.out.println(javaDigitRemoveStr);
+        //去掉两边空格，并把中间联系的空格替换成字符‘-’
+        String trimAndCollStr = CharMatcher.WHITESPACE.trimAndCollapseFrom(" |abc   def|  ", '-');
+        System.out.println(trimAndCollStr);
+        System.out.println(CharMatcher.JAVA_LOWER_CASE.collapseFrom("123abFFDCa", '-'));
+        System.out.println(CharMatcher.inRange('A', 'a').retainFrom("123abADg"));
+        //endregion
+
+        //region Charsets:字符编码常量类
+        System.out.println(Charsets.UTF_8);
+        //endregion
+
+        //region CaseFormat:字符格式，如大写骆驼，小写骆驼。。。
+        System.out.println(CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "AbcDef"));
+
+        System.out.println(CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_HYPHEN, "abcEfgHiJ"));
         //endregion
 
     }
