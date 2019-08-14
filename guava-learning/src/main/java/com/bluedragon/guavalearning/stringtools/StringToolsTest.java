@@ -17,6 +17,7 @@ public class StringToolsTest {
     public static void main(String[] args) {
 
         //region Joiner:连接器
+        System.out.println("=============Joiner:连接器=============");
         //创建一个连接器，并指定连接字符串
         Joiner joiner = Joiner.on(";");
         //连接多个对象
@@ -63,6 +64,7 @@ public class StringToolsTest {
         //endregion
 
         //region Splitter:拆分器
+        System.out.println("=============Splitter:拆分器=============");
         Splitter splitter = Splitter.on(",")
                 .omitEmptyStrings() //或略空字符串
                 .trimResults(); //去掉每个元素两边的空格
@@ -89,6 +91,7 @@ public class StringToolsTest {
         //endregion
 
         //region CharMatcher:字符匹配器
+        System.out.println("=============CharMatcher:字符匹配器=============");
         String containDigitStr = "ab123c1.0dd";
         //只保留数字
         String digitRetainStr = CharMatcher.DIGIT.retainFrom(containDigitStr);
@@ -109,12 +112,14 @@ public class StringToolsTest {
         //endregion
 
         //region Charsets:字符编码常量类
+        System.out.println("=============Charsets:字符编码常量类=============");
         System.out.println(Charsets.UTF_8);
+        System.out.println(Charsets.ISO_8859_1);
         //endregion
 
         //region CaseFormat:字符格式，如大写骆驼，小写骆驼。。。
+        System.out.println("=============CaseFormat:字符格式=============");
         System.out.println(CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, "AbcDef"));
-
         System.out.println(CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_HYPHEN, "abcEfgHiJ"));
         //endregion
 
