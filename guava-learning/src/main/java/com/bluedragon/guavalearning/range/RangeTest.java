@@ -139,5 +139,15 @@ public class RangeTest {
         System.out.println(integerContiguousSet.headSet(5).range());//[2‥4]
         System.out.println(integerContiguousSet.tailSet(5).range());//[5‥8]
 
+        //自定义离散域
+        EvenIntegerDiscreteDomain evenIntegerDiscreteDomain = new EvenIntegerDiscreteDomain(0, 100);
+        System.out.println(String.format("next(5):%s,netx(4):%s,next(3):%s", evenIntegerDiscreteDomain.next(5),
+                evenIntegerDiscreteDomain.next(4), evenIntegerDiscreteDomain.next(3)));
+        System.out.println(String.format("previous(5):%s,previous(4):%s,previous(3):%s", evenIntegerDiscreteDomain.previous(5),
+                evenIntegerDiscreteDomain.previous(4), evenIntegerDiscreteDomain.previous(3)));
+        System.out.println(String.format("max:%s,min:%s", evenIntegerDiscreteDomain.maxValue(), evenIntegerDiscreteDomain.minValue()));
+        System.out.println(String.format("evenIntegerDiscreteDomain.distance(3, 5)：%s", evenIntegerDiscreteDomain.distance(3, 5)));
+        System.out.println(String.format("evenIntegerDiscreteDomain.distance(3, 6)：%s", evenIntegerDiscreteDomain.distance(3, 6)));
+
     }
 }
