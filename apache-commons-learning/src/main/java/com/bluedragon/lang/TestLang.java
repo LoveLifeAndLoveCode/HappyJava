@@ -45,6 +45,7 @@ public class TestLang {
                 null);
         Assert.assertArrayEquals(StringUtils.split("1|2|", "|"),
                 new String[]{"1", "2"});
+        //根据大写字母分割
         Assert.assertArrayEquals(StringUtils.splitByCharacterTypeCamelCase("LoveAndPeace"),
                 new String[]{"Love", "And","Peace"});
         Assert.assertArrayEquals(StringUtils.splitByCharacterTypeCamelCase("  LoveAndPeace"),
@@ -62,6 +63,26 @@ public class TestLang {
         //保留所有分割的，不忽略空格
         Assert.assertArrayEquals(StringUtils.splitPreserveAllTokens("#1#2##", "#"),
                 new String[]{"","1","2","",""});
+
+        //【缩写】
+        //得到maxWidth-3个字符+"...",maxWidth最小为4
+        Assert.assertEquals(StringUtils.abbreviate("abcde 12345", 7), "abcd...");
+        Assert.assertEquals(StringUtils.abbreviate("abcde 12345", "哈哈", 7), "abcde哈哈");
+
+        //【计数】
+        //计算字符或字符串出现次数
+        Assert.assertEquals(StringUtils.countMatches("I Love you so much",'u'),2);
+        Assert.assertEquals(StringUtils.countMatches("I Love you so much",' '),4);
+        Assert.assertEquals(StringUtils.countMatches("be who you want to beb","be"),2);
+
+        //【返回默认值】
+        Assert.assertEquals(StringUtils.defaultString("a"),"a");
+        Assert.assertEquals(StringUtils.defaultString(null),"");
+        Assert.assertEquals(StringUtils.defaultString(null,"b"),"b");
+        Assert.assertEquals(StringUtils.defaultIfBlank(" ","b"),"b");
+        Assert.assertEquals(StringUtils.defaultIfEmpty("","b"),"b");
+
+        System.out.println();
     }
 
 }
