@@ -82,6 +82,60 @@ public class TestLang {
         Assert.assertEquals(StringUtils.defaultIfBlank(" ","b"),"b");
         Assert.assertEquals(StringUtils.defaultIfEmpty("","b"),"b");
 
+        //比较【可以避免空指针异常】
+        Assert.assertEquals(StringUtils.compare("a","b"),-1);
+        //默认null比较小
+        Assert.assertEquals(StringUtils.compare("a",null),1);
+        Assert.assertEquals(StringUtils.compare("a",null,false),-1);
+        try {
+            //使用String原生的比较方法，没有处理空指针异常
+            int i = "a".compareTo(null);
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof  NullPointerException);
+            System.out.println("空指针异常");
+        }
+
+        //【截取】
+        Assert.assertEquals(StringUtils.substring("abcde", 1), "bcde");
+        Assert.assertEquals(StringUtils.substring("abcde", 6), "");
+        Assert.assertEquals(StringUtils.substring(null, 1), null);
+        Assert.assertEquals(StringUtils.substringBefore("ab;cde", ";"), "ab");
+        Assert.assertEquals(StringUtils.substringAfter("ab;cde", ";"), "cde");
+        Assert.assertEquals(StringUtils.substringBetween("ab;|kkk|jjj|cde", "|"), "kkk");
+        Assert.assertEquals(StringUtils.substringBetween("ab;[kkk]jjj]cde", "[","]"), "kkk");
+        Assert.assertEquals(StringUtils.substringBetween("ab;[kkk[jjj]cde", "[","]"), "kkk[jjj");
+        Assert.assertArrayEquals(StringUtils.substringsBetween("abc|de|fg||","|","|"),new String[]{"de",""});
+        Assert.assertArrayEquals(StringUtils.substringsBetween("abc|de|fg|||","|","|"),new String[]{"de",""});
+        Assert.assertArrayEquals(StringUtils.substringsBetween("abc|de]fg|]","|","]"),new String[]{"de",""});
+
+        //【截断】
+        Assert.assertEquals(StringUtils.truncate("2020-01-01 12:00:30", 10), "2020-01-01");
+        Assert.assertEquals(StringUtils.truncate("2020-01-01 12:00:30", 2,10), "20-01-01 1");
+
+        //【包裹和解包裹】
+        Assert.assertEquals(StringUtils.wrap("111", "kk"), "kk111kk");
+        Assert.assertEquals(StringUtils.wrap(null, "kk"), null);
+        Assert.assertEquals(StringUtils.wrap("", "kk"), "");
+        Assert.assertEquals(StringUtils.unwrap("abckk123kkdef", "kk"), "abckk123kkdef");
+        //必须前后位包裹字符串
+        Assert.assertEquals(StringUtils.unwrap("kk123kk", "kk"), "123");
+
+        //【左边填充】
+        Assert.assertEquals(StringUtils.leftPad("1234567", 9), "  1234567");
+        Assert.assertEquals(StringUtils.leftPad("1234567", 9,"kk"), "kk1234567");
+        Assert.assertEquals(StringUtils.leftPad("1234567", 9,"kkk"), "kk1234567");
+        Assert.assertEquals(StringUtils.leftPad("1234567", 11,"abc"), "abca1234567");
+
+        //【移除】
+        Assert.assertEquals(StringUtils.remove("abc de f", ' '), "abcdef");
+        Assert.assertEquals(StringUtils.removeStart("abc||de|f", "|"), "abc||de|f");
+        Assert.assertEquals(StringUtils.removeStart("||abc||de|f||", "|"), "|abc||de|f||");
+        Assert.assertEquals(StringUtils.removeEnd("||abc||de|f||", "|"), "||abc||de|f|");
+
+        //【重复】
+        Assert.assertEquals(StringUtils.repeat("abc", 3), "abcabcabc");
+        Assert.assertEquals(StringUtils.repeat("abc", "|",3), "abc|abc|abc");
+
         System.out.println();
     }
 
