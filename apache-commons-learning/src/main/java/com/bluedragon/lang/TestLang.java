@@ -22,10 +22,6 @@ public class TestLang {
         Assert.assertTrue(StringUtils.isBlank(""));
         Assert.assertTrue(StringUtils.isBlank(null));
 
-        //【默认值】
-        Assert.assertTrue("".equals(StringUtils.defaultString(null)));
-        Assert.assertTrue("1".equals(StringUtils.defaultString(null,"1")));
-
         //【包含】
         //包含任何一个
         Assert.assertTrue(StringUtils.contains("abc", 'a'));
@@ -69,6 +65,10 @@ public class TestLang {
         Assert.assertEquals(StringUtils.abbreviate("abcde 12345", 7), "abcd...");
         Assert.assertEquals(StringUtils.abbreviate("abcde 12345", "哈哈", 7), "abcde哈哈");
 
+        //【大小写】
+        Assert.assertEquals(StringUtils.capitalize("I love china,vERy MucH"),"I love china,vERy MucH");
+        Assert.assertEquals(StringUtils.capitalize("abcD"),"AbcD");
+
         //【计数】
         //计算字符或字符串出现次数
         Assert.assertEquals(StringUtils.countMatches("I Love you so much",'u'),2);
@@ -78,6 +78,8 @@ public class TestLang {
         //【返回默认值】
         Assert.assertEquals(StringUtils.defaultString("a"),"a");
         Assert.assertEquals(StringUtils.defaultString(null),"");
+        Assert.assertTrue("".equals(StringUtils.defaultString(null)));
+        Assert.assertTrue("1".equals(StringUtils.defaultString(null,"1")));
         Assert.assertEquals(StringUtils.defaultString(null,"b"),"b");
         Assert.assertEquals(StringUtils.defaultIfBlank(" ","b"),"b");
         Assert.assertEquals(StringUtils.defaultIfEmpty("","b"),"b");
